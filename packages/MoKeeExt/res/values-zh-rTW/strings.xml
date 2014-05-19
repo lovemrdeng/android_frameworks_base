@@ -20,4 +20,8 @@
     <string name="screenshot_delete">"刪除"</string>
     <string name="screenshot_delete_confirmation">"屏幕截圖已刪除."</string>
 
+    <!-- ScreenShort Trash -->
+    <string name="trash">"放棄"</string>
+    <string name="screenshot_trash_confirmation">"已放棄保存屏幕截圖."</string>
+
 </resources>

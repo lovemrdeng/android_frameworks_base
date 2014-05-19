@@ -79,4 +79,7 @@
   <java-symbol type="array" name="shortcut_list_drawables_in_systemui" />
   <java-symbol type="array" name="shortcut_list_items" />
 
+  <!-- HALO FloatingWindow Style -->
+  <java-symbol type="style" name="Theme.DeviceDefault.FloatingWindow" />
+  <java-symbol type="style" name="Theme.DeviceDefault.FloatingWindowLight" />
 </resources>
