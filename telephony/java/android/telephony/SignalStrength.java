@@ -513,9 +513,10 @@ public class SignalStrength implements Parcelable {
 
         if (isGsm) {
             boolean lteChecks = (getLteRsrp() == INVALID && getLteRsrq() == INVALID && getLteRssnr() == INVALID && getLteSignalStrength() == 99);
-            boolean otherSignals = needsOldRilFeature("signalstrength") || getTdScdmaLevel() != SIGNAL_STRENGTH_NONE_OR_UNKNOWN;
+            boolean oldRil = needsOldRilFeature("signalstrength");
             level = getLteLevel();
-            if ((level == SIGNAL_STRENGTH_NONE_OR_UNKNOWN && getGsmAsuLevel() != 99 && lteChecks) || otherSignals) {
+            if ((level == SIGNAL_STRENGTH_NONE_OR_UNKNOWN && ((getGsmAsuLevel() != 99 && lteChecks)
+                   || getTdScdmaLevel() != SIGNAL_STRENGTH_NONE_OR_UNKNOWN)) || oldRil) {
                 level = getTdScdmaLevel();
                 if (level == SIGNAL_STRENGTH_NONE_OR_UNKNOWN) {
                     level = getGsmLevel();
@@ -547,9 +548,10 @@ public class SignalStrength implements Parcelable {
     public int getAsuLevel() {
         int asuLevel = 0;
         if (isGsm) {
-            boolean otherSignals = needsOldRilFeature("signalstrength") || getTdScdmaLevel() != SIGNAL_STRENGTH_NONE_OR_UNKNOWN;
+            boolean oldRil = needsOldRilFeature("signalstrength");
             boolean lteChecks = (getLteRsrp() == INVALID && getLteRsrq() == INVALID && getLteRssnr() == INVALID && getLteSignalStrength() == 99);
-            if ((getLteLevel() == SIGNAL_STRENGTH_NONE_OR_UNKNOWN && getGsmAsuLevel() != 99 && lteChecks) || otherSignals) {
+            if ((getLteLevel() == SIGNAL_STRENGTH_NONE_OR_UNKNOWN && ( (getGsmAsuLevel() != 99 &&
+                   lteChecks) || getTdScdmaAsuLevel() != 99 )) || oldRil) {
                 if (getTdScdmaLevel() == SIGNAL_STRENGTH_NONE_OR_UNKNOWN) {
                     asuLevel = getGsmAsuLevel();
                 } else {
@@ -585,9 +587,10 @@ public class SignalStrength implements Parcelable {
         int dBm = INVALID;
 
         if(isGsm()) {
-            boolean otherSignals = needsOldRilFeature("signalstrength") || getTdScdmaLevel() != SIGNAL_STRENGTH_NONE_OR_UNKNOWN;
+            boolean oldRil = needsOldRilFeature("signalstrength");
             boolean lteChecks = (getLteRsrp() == INVALID && getLteRsrq() == INVALID && getLteRssnr() == INVALID && getLteSignalStrength() == 99);
-            if ((getLteLevel() == SIGNAL_STRENGTH_NONE_OR_UNKNOWN && getGsmAsuLevel() != 99 && lteChecks) || otherSignals) {
+            if ((getLteLevel() == SIGNAL_STRENGTH_NONE_OR_UNKNOWN && ( (getGsmAsuLevel() != 99 && lteChecks)
+                    || getTdScdmaAsuLevel() != 99 )) || oldRil) {
                 if (getTdScdmaLevel() == SIGNAL_STRENGTH_NONE_OR_UNKNOWN) {
                     dBm = getGsmDbm();
                 } else {
@@ -674,10 +677,10 @@ public class SignalStrength implements Parcelable {
         int levelDbm;
         int levelEcio;
 
-        if (cdmaDbm >= -75) levelDbm = SIGNAL_STRENGTH_GREAT;
-        else if (cdmaDbm >= -85) levelDbm = SIGNAL_STRENGTH_GOOD;
-        else if (cdmaDbm >= -95) levelDbm = SIGNAL_STRENGTH_MODERATE;
-        else if (cdmaDbm >= -100) levelDbm = SIGNAL_STRENGTH_POOR;
+        if (cdmaDbm >= -95) levelDbm = SIGNAL_STRENGTH_GREAT;
+        else if (cdmaDbm >= -100) levelDbm = SIGNAL_STRENGTH_GOOD;
+        else if (cdmaDbm >= -105) levelDbm = SIGNAL_STRENGTH_MODERATE;
+        else if (cdmaDbm >= -110) levelDbm = SIGNAL_STRENGTH_POOR;
         else levelDbm = SIGNAL_STRENGTH_NONE_OR_UNKNOWN;
 
         // Ec/Io are in dB*10
@@ -734,10 +737,10 @@ public class SignalStrength implements Parcelable {
         int levelEvdoDbm;
         int levelEvdoSnr;
 
-        if (evdoDbm >= -65) levelEvdoDbm = SIGNAL_STRENGTH_GREAT;
-        else if (evdoDbm >= -75) levelEvdoDbm = SIGNAL_STRENGTH_GOOD;
-        else if (evdoDbm >= -90) levelEvdoDbm = SIGNAL_STRENGTH_MODERATE;
-        else if (evdoDbm >= -105) levelEvdoDbm = SIGNAL_STRENGTH_POOR;
+        if (evdoDbm >= -95) levelEvdoDbm = SIGNAL_STRENGTH_GREAT;
+        else if (evdoDbm >= -100) levelEvdoDbm = SIGNAL_STRENGTH_GOOD;
+        else if (evdoDbm >= -105) levelEvdoDbm = SIGNAL_STRENGTH_MODERATE;
+        else if (evdoDbm >= -110) levelEvdoDbm = SIGNAL_STRENGTH_POOR;
         else levelEvdoDbm = SIGNAL_STRENGTH_NONE_OR_UNKNOWN;
 
         if (evdoSnr >= 7) levelEvdoSnr = SIGNAL_STRENGTH_GREAT;

@@ -25,7 +25,7 @@
     <string name="airplane_mode_toggleable_radios" translatable="false">bluetooth,wifi,nfc</string>
     <bool name="def_auto_time">true</bool>
     <bool name="def_auto_time_zone">true</bool>
-    <bool name="def_accelerometer_rotation">true</bool>
+    <bool name="def_accelerometer_rotation">false</bool>
     <!-- Default screen brightness, from 0 to 255.  102 is 40%. -->
     <integer name="def_screen_brightness">102</integer>
     <bool name="def_screen_brightness_automatic_mode">false</bool>
@@ -42,7 +42,7 @@
          Network location is off by default because it requires
          user opt-in via Setup Wizard or Settings.
     -->
-    <string name="def_location_providers_allowed" translatable="false">gps</string>
+    <string name="def_location_providers_allowed" translatable="false"></string>
     <bool name="assisted_gps_enabled">true</bool>
     <bool name="def_netstats_enabled">true</bool>
     <bool name="def_usb_mass_storage_enabled">true</bool>
@@ -208,4 +208,17 @@
 
     <!-- Default value of Settings.System.NOISE_SUPPRESSION -->
     <bool name="def_noise_suppression">false</bool>
+
+    <!-- Default value of Settings.System.SCREEN_ANIMATION_STYLE -->
+    <integer name="def_screen_animation_style">0</integer>
+
+    <!-- Default theme -->
+    <string name="def_theme_package"></string>
+    <string name="def_theme_components"></string>
+
+    <!-- Default value of Settings.System.DOUBLE_TAP_SLEEP_GESTURE -->
+    <integer name="def_double_tap_sleep_gesture">1</integer>
+
+    <!-- Default value of Settings.System.QUICK_SETTINGS_RIBBON_TILES -->
+    <string name="def_quick_settings_ribbon_tiles"></string>
 </resources>
